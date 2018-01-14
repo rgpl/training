@@ -11,7 +11,7 @@ $(document).ready(function() {
 	});
 
 	// Fancybox
-	$('.work-box').fancybox();
+	$('.work-box').fancybox();//fancy-box initilisation
 
 	// Flexslider
 	$('.flexslider').flexslider({
@@ -53,4 +53,7 @@ $(document).ready(function() {
 		$('.nav-toggle').toggleClass('close-nav');
 		nav.toggleClass('open');
 	});
+	window.onresize  = function(){
+		console.log("window-resize");
+	}
 });
