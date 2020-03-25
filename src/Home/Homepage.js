@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from './Sidebar';
 import Footer from './Footer/Footer';
 import Signup from '../Login/Signup';
+//import SideBar from './Sidebar';
 
 import {
   EuiPage,
