@@ -29,7 +29,15 @@ import {
   EuiToolTip,
 } from '@elastic/eui';
 
-const color ="primary"
+const color = [
+  'primary',
+  'text',
+  'subdued',
+  'success',
+  'warning',
+  'danger',
+  'disabled',
+];
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -113,7 +121,7 @@ class Homepage extends React.Component {
           errors = [
               "Username / Gender has to be Filled!!",
           ];
-      }
+  }
 
   
 return (
@@ -124,65 +132,50 @@ return (
       <EuiPageHeader>
         <EuiPageHeaderSection>
           <EuiTitle size="l">
-            <h1>Page title</h1>
+            <h1>Unlock Testing</h1>
           </EuiTitle>
         </EuiPageHeaderSection>
-        <EuiPageHeaderSection>Page abilities</EuiPageHeaderSection>
+        <EuiPageHeaderSection>Unlock HomePage</EuiPageHeaderSection>
       </EuiPageHeader>
       <EuiPageContent verticalPosition="center" horizontalPosition="center" style={{marginBottom:100}}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2 className="text-center"> Sign Up </h2>
+              <h2 className="text-center"> Welcome to Unlock Games </h2>
             </EuiTitle>
-            <EuiPanel style={{ maxWidth: 300 }}>
-    <EuiFormRow
-      label="UserName"
-      helpText="Show validation help text only."
-      display="columnCompressed">
-      <EuiFieldText name="first" compressed 
-      value= { this.state.UserName }
-      onChange={ this.UserNameChange }
-      />
-    </EuiFormRow>
-
-    <EuiFormRow
-      label={
-        <EuiToolTip content="Otherwise use an EuiToolTip around the label of the form row.">
-          <span>
-            Gender <EuiIcon type="questionInCircle" color="subdued" />
-          </span>
-        </EuiToolTip>
-      }
-      display="columnCompressed">
-      <EuiSelect
-        options={[
-          { value: 'option_one', text: 'Male' },
-          { value: 'option_two', text: 'Female' },
-          { value: 'option_three', text: 'Special Gender' },
-        ]}
-        compressed
-        value= { this.state.Gender }
-        onChange={ this.GenderChange }
-      />
-    </EuiFormRow>
-  </EuiPanel>
-          </EuiPageContentHeaderSection>
+        </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
             <EuiPageContentBody> 
                 <EuiFlexGroup gutterSize="s" alignItems="center">
                     
-                        <EuiFlexItem key={color} grow={false}>
+                        <EuiFlexItem key={color} grow={true}>
                         <EuiButton 
-                        onClick={
+                          color= {color.success}
+                          onClick={
                           this.SignupClick
-                        }
+                          }
                         iconType="arrowRight">                        
-                        <h2 className="text-center"> Submit </h2>
+                        <h2 className="text-center"> SignUp </h2>
                         </EuiButton>
+                        
+                        
                         </EuiFlexItem>
+                </EuiFlexGroup>
+            </EuiPageContentBody>
+            <EuiPageContentBody> 
+                <EuiFlexGroup gutterSize="s" alignItems="center">
                     
-  </EuiFlexGroup></EuiPageContentBody>
+                  <EuiFlexItem key={color} grow={true}>
+                      <EuiButton 
+                      onClick={
+                        this.SignupClick
+                      }
+                      iconType="arrowLeft">                        
+                      <h2 className="text-center"> SignIn </h2>
+                      </EuiButton>
+                 </EuiFlexItem>
+                </EuiFlexGroup>
+            </EuiPageContentBody>
       </EuiPageContent>
       <Footer />
     </EuiPageBody>
