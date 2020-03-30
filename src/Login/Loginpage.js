@@ -23,55 +23,55 @@ import {
 import { Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-class Login extends React.Component {
+class Loginpage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            userName: '',
-            password: '',
+            UserName: '',
+            Gender: '',
             authenticated: false,
             showErrors: false
         };
     }
 
-    onNameChange = e => {
+    UserNameChange = e => {
         this.setState({
-          userName: e.target.value,
+          UserName: e.target.value,
         });
     };
 
-    onPasswordChange = e => {
+    GenderChange = e => {
         this.setState({
-            password: e.target.value
+            Gender: e.target.value
         });
     }
 
-    onLoginClick = e => {
+    LoginpageClick = e => {
 
-        if(this.state.username !== "" && this.state.password !== "") {
+        if(this.state.UserName !== "" && this.state.Gender !== "") {
 
             this.setState({
                 showErrors: false
             });
 
-            axios.get('http://localhost:4000/login', {
+            axios.get('http://localhost:3000/loginpage', {
                 params: {
-                username: this.state.userName,
-                password: this.state.password
+                Username: this.state.UserName,
+                Gender: this.state.Gender
                 }
             },{ withCredentials: true })
             .then( (response)=> {
-                console.log("login-response->",response);
+                console.log("Signup-response->",response);
                 if(response.data.success){
                     this.setState({
-                        authenticated:true
+                        authenticated:false
                     });
                 }
             })
             .catch((error) => {
                 this.setState({
-                    authenticated:true
+                    authenticated:false
                 });
             })
             .finally(() => {
@@ -88,8 +88,8 @@ class Login extends React.Component {
 
         let code = e.keyCode || e.which;
         if(code === 13) {
-            if(this.state.username !== "" && this.state.password !== "") {
-                this.onLoginClick();
+            if(this.state.UserName !== "" && this.state.Gender  !== "") {
+                this.LoginpageClick();
             }
         }
     }
@@ -103,7 +103,7 @@ class Login extends React.Component {
 
         if (this.state.showErrors) {
             errors = [
-                "Username / Password cannot be empty!!",
+                "Username / Gender has to be Filled!!",
             ];
         }
 
@@ -113,10 +113,10 @@ class Login extends React.Component {
                     <EuiPageHeader>
                         <EuiPageHeaderSection>
                         <EuiTitle size="l">
-                            <h1>Elastic Sample</h1>
+                            <h1>Unlock</h1>
                         </EuiTitle>
                         </EuiPageHeaderSection>
-                        <EuiPageHeaderSection>elastic sample</EuiPageHeaderSection>
+                        <EuiPageHeaderSection> Unlock Signup </EuiPageHeaderSection>
                     </EuiPageHeader>
                     <EuiSpacer size="xxl"></EuiSpacer>
                 <EuiPageContent verticalPosition="center" horizontalPosition="center">
@@ -144,9 +144,9 @@ class Login extends React.Component {
 
                             <EuiFormRow>
                                 <EuiFieldPassword
-                                placeholder="Password"
-                                value={this.state.password}
-                                onChange={this.onPasswordChange}
+                                placeholder="Gender"
+                                value={this.state.Gender}
+                                onChange={this.GenderChange}
                                 aria-label="Use aria labels when no actual label is in use"
                                 onKeyUp={this.enterPressed}
                                 />
@@ -187,4 +187,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default Loginpage;
