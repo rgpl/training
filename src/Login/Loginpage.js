@@ -23,7 +23,7 @@ import {
 import { Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-class Loginpage extends React.Component {
+class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -116,7 +116,7 @@ class Loginpage extends React.Component {
                             <h1>Unlock</h1>
                         </EuiTitle>
                         </EuiPageHeaderSection>
-                        <EuiPageHeaderSection> Unlock Signup </EuiPageHeaderSection>
+                        <EuiPageHeaderSection> Unlock LoginPage </EuiPageHeaderSection>
                     </EuiPageHeader>
                     <EuiSpacer size="xxl"></EuiSpacer>
                 <EuiPageContent verticalPosition="center" horizontalPosition="center">
@@ -187,4 +187,4 @@ class Loginpage extends React.Component {
     }
 }
 
-export default Loginpage;
+export default LoginPage;

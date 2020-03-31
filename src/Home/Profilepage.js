@@ -31,7 +31,7 @@ import {
 
 const color ="primary"
 
-class Homepage extends React.Component {
+class ProfilePage extends React.Component {
   constructor(props) {
       super(props);
 
@@ -173,6 +173,6 @@ return (
  }
 }
 
-export default Homepage;
+export default ProfilePage;
 
 

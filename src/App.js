@@ -9,19 +9,26 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Homepage from './Home/Homepage';
-import Profilepage from './Home/Profilepage';
-
+import HomePage from './Home/HomePage';
+import ProfilePage from './Home/ProfilePage';
+import SignupPage from './Login/SignupPage';
+import LoginPage from './Login/LoginPage';
 class App extends React.Component {
     render(){
         return (
             <Router>
               <Switch>
                 <Route path="/profile">
-                  <Profilepage />
+                  <ProfilePage />
+                </Route>
+                <Route path="/signup">
+                    <SignupPage />
+                </Route>
+                <Route path="/signin">
+                    <LoginPage />
                 </Route>
                 <Route exact path="/">
-                  <Homepage />
+                  <HomePage />
                 </Route>
 
               </Switch>
