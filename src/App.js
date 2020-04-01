@@ -24,11 +24,11 @@ class App extends React.Component {
                 <Route path="/signup">
                     <SignupPage />
                 </Route>
-                <Route path="/signin">
-                    <LoginPage />
+                <Route path="/home">
+                    <HomePage />
                 </Route>
                 <Route exact path="/">
-                  <HomePage />
+                  <LoginPage />
                 </Route>
 
               </Switch>

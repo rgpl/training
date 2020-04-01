@@ -23,6 +23,16 @@ import {
 import { Redirect} from 'react-router-dom';
 import axios from 'axios';
 
+const color = [
+    'primary',
+    'text',
+    'subdued',
+    'success',
+    'warning',
+    'danger',
+    'disabled',
+  ];
+
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
@@ -31,7 +41,8 @@ class LoginPage extends React.Component {
             UserName: '',
             Gender: '',
             authenticated: false,
-            showErrors: false
+            showErrors: false,
+            gotoSignUpPage:false
         };
     }
 
@@ -94,9 +105,16 @@ class LoginPage extends React.Component {
         }
     }
 
+    signUpClick = e => {
+
+        this.setState({
+          gotoSignUpPage:true,
+        });  
+      }
+
     render() {
         if(this.state.authenticated){
-            return <Redirect to='/' />
+            return <Redirect to='/signin' />
         }
 
         let errors;
@@ -106,6 +124,10 @@ class LoginPage extends React.Component {
                 "Username / Gender has to be Filled!!",
             ];
         }
+
+        if(this.state.gotoSignUpPage){
+            return  <Redirect to='/signup' />
+          }
 
         return (
             <EuiPage>
@@ -158,10 +180,22 @@ class LoginPage extends React.Component {
                                     GO
                                 </EuiButton>
                             </EuiFlexItem>
-                        </EuiForm>
-
+                        </EuiForm>                    
                     </EuiPageContentBody>
                 </EuiPageContent>
+                <EuiPageContentBody> 
+                               <EuiFlexGroup gutterSize="s" alignItems="right">
+                                 <EuiFlexItem key={color} grow={false}>
+                                        <EuiButton 
+                                        onClick={
+                                        this.signUpClick
+                                        }
+                                        iconType="arrowRight">                        
+                                        <h2 className="text-center"> Signup </h2>
+                                        </EuiButton>
+                                    </EuiFlexItem>
+                                </EuiFlexGroup>
+                            </EuiPageContentBody>
                 <EuiBottomBar>
                     <EuiFlexGroup justifyContent="spaceBetween">
                         <EuiFlexItem grow={false}>

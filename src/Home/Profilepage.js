@@ -39,7 +39,8 @@ class ProfilePage extends React.Component {
           UserName: '',
           Gender: '',
           authenticated: false,
-          showErrors: false
+          showErrors: false,
+          gotoHomePage: false
       };
   }
 
@@ -102,6 +103,13 @@ class ProfilePage extends React.Component {
       }
   }
 
+  Homepage = e => {
+    
+    this.setState({
+      gotoHomePage:true,
+    });        
+  }
+
   render() {
       if(this.state.authenticated){
           return <Redirect to='/' />
@@ -114,20 +122,37 @@ class ProfilePage extends React.Component {
               "Username / Gender has to be Filled!!",
           ];
       }
+      
+      if(this.state.gotoHomePage){
+        return  <Redirect to='/home' />
+      }
 
   
 return (
   <EuiPage>
     <SideBar />
     <EuiPageBody>
-    
-      <EuiPageHeader>
+        <EuiPageContentBody> 
+                    <EuiFlexGroup gutterSize="s" alignItems="center">
+                        
+                            <EuiFlexItem key={color} grow={false}>
+                            <EuiButton 
+                            onClick={
+                              this.Homepage
+                            }
+                            iconType="arrowRight">                        
+                            <h2 className="text-center"> SignOut </h2>
+                            </EuiButton>
+                            </EuiFlexItem>
+                        </EuiFlexGroup>
+        </EuiPageContentBody>
+    <EuiPageHeader>
         <EuiPageHeaderSection>
           <EuiTitle size="l">
-            <h1>Page title</h1>
+            <h1>Unlock Testing</h1>
           </EuiTitle>
         </EuiPageHeaderSection>
-        <EuiPageHeaderSection>Page abilities</EuiPageHeaderSection>
+        <EuiPageHeaderSection>User ProfilePage</EuiPageHeaderSection>
       </EuiPageHeader>
       <EuiPageContent verticalPosition="center" horizontalPosition="center" style={{marginBottom:100}}>
         <EuiPageContentHeader>

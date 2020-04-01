@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from './Sidebar';
 import Footer from './Footer/Footer';
 import { Redirect} from 'react-router-dom';
+//import Header from './Header/Header';
 import {
   EuiPage,
   EuiPageBody,

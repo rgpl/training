@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBar from '../Home/Sidebar';
-import Footer from '../Home/Footer/Footer';
+//import SideBar from '../Home/Sidebar';
+//import Footer from '../Home/Footer/Footer';
 //import Signup from '../Login/Signup';
 //import SideBar from './Sidebar';
 import { Redirect} from 'react-router-dom';
@@ -118,7 +118,6 @@ class SignupPage extends React.Component {
   
 return (
   <EuiPage>
-    <SideBar />
     <EuiPageBody>
     
       <EuiPageHeader>
@@ -182,11 +181,10 @@ return (
                         </EuiButton>
                         </EuiFlexItem>
                     
-  </EuiFlexGroup></EuiPageContentBody>
+                </EuiFlexGroup>
+            </EuiPageContentBody>
       </EuiPageContent>
-      <Footer />
     </EuiPageBody>
-    
   </EuiPage>
   );
  }
