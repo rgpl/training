@@ -42,7 +42,9 @@ class LoginPage extends React.Component {
             Gender: '',
             authenticated: false,
             showErrors: false,
-            gotoSignUpPage:false
+            gotoSignUpPage:false,
+            gotoHomepage: false,
+            gotoProfilePage: false,
         };
     }
 
@@ -58,6 +60,13 @@ class LoginPage extends React.Component {
         });
     }
 
+    homePage = e => {
+
+        this.setState({
+          gotoHomepage:true,
+        });  
+      }
+ 
     LoginpageClick = e => {
 
         if(this.state.UserName !== "" && this.state.Gender !== "") {
@@ -111,12 +120,24 @@ class LoginPage extends React.Component {
           gotoSignUpPage:true,
         });  
       }
+    
+    profilePage = e => {
+
+        this.setState({
+          gotoProfilePage:true,
+        });  
+      }
 
     render() {
         if(this.state.authenticated){
             return <Redirect to='/signin' />
         }
-
+        if(this.state.gotoHomepage){
+            return  <Redirect to='/home' />
+          }
+        if(this.state.gotoProfilePage){
+            return  <Redirect to='/profile' />
+          }  
         let errors;
 
         if (this.state.showErrors) {
@@ -176,8 +197,11 @@ class LoginPage extends React.Component {
 
                             <EuiSpacer size="m"></EuiSpacer>
                             <EuiFlexItem grow={false}>
-                                <EuiButton fill onClick={this.onLoginClick}>
-                                    GO
+                                <EuiButton  onClick={
+                                    this.profilePage
+                                    }
+                                    iconType="arrowRight">                        
+                                    <h2 className="text-center"> Go </h2>
                                 </EuiButton>
                             </EuiFlexItem>
                         </EuiForm>                    

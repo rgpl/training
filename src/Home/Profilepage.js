@@ -158,7 +158,7 @@ return (
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2 className="text-center"> Sign Up </h2>
+              <h2 className="text-center"> User Profile </h2>
             </EuiTitle>
             <EuiPanel style={{ maxWidth: 300 }}>
     <EuiFormRow
