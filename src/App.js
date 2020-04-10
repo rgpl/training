@@ -9,15 +9,20 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import CalendarPage from './Calendar/CalendarPage';
 import HomePage from './Home/HomePage';
 import ProfilePage from './Home/ProfilePage';
 import SignupPage from './Login/SignupPage';
 import LoginPage from './Login/LoginPage';
+import { Calendar } from 'react-big-calendar';
 class App extends React.Component {
     render(){
         return (
             <Router>
               <Switch>
+                <Route path="/Calendar">
+                  <CalendarPage />
+                </Route>
                 <Route path="/profile">
                   <ProfilePage />
                 </Route>

@@ -1,10 +1,12 @@
 import React from 'react';
 import SideBar from './Sidebar';
 import Footer from './Footer/Footer';
-//import Signup from '../Login/Signup';
-//import SideBar from './Sidebar';
-import { Redirect} from 'react-router-dom';
+
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { Calendar } from 'react-big-calendar';
+import moment from 'moment'
+import CalendarPage from '../Calendar/CalendarPage';
 
 import {
   EuiPage,
@@ -28,10 +30,14 @@ import {
   EuiIcon,
   EuiToolTip,
 } from '@elastic/eui';
+import { ThemeProvider } from '@elastic/eui';
+
+
 
 const color ="primary"
 
 class ProfilePage extends React.Component {
+  
   constructor(props) {
       super(props);
 
@@ -40,10 +46,17 @@ class ProfilePage extends React.Component {
           Gender: '',
           authenticated: false,
           showErrors: false,
-          gotoHomePage: false
+          gotoHomePage: false,
+          gotoCalenderPage: false
       };
   }
 
+  calendarPage = e => {
+    this.setState({
+      gotoCalenderPage:true,
+    });
+  }
+  
   UserNameChange = e => {
       this.setState({
         UserName: e.target.value,
@@ -113,6 +126,9 @@ class ProfilePage extends React.Component {
   render() {
       if(this.state.authenticated){
           return <Redirect to='/' />
+      }
+      if(this.state.gotoCalenderPage){
+        return  <Redirect to='/Calendar' />
       }
 
       let errors;
@@ -190,6 +206,13 @@ return (
                     
   </EuiFlexGroup></EuiPageContentBody>
       </EuiPageContent>
+      <EuiButton 
+                            onClick={
+                              this.calendarPage
+                            }
+                            iconType="arrowRight">                        
+                            <h2 className="text-center"> Calendar </h2>
+                            </EuiButton>
       <Footer />
     </EuiPageBody>
     
